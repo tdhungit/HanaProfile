@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    div#login.paddsection
+        div.container
+            form.form-signin(action="/admin/auth", method="post", style="max-width:400px;margin:0 auto;")
+                h1.h3.mb-3.font-weight-normal Please Login
+
+                label.sr-only Username
+                input.form-control(type="text", name="username", id="username", required=true, placeholder="Username", autofocus=true)
+
+                label.sr-only
+                input.form-control(type="password", name="password", id="password", required=true)
+
+                button.btn.btn-lg.btn-primary.btn-block(type="submit") Login
+                p.mt-5.mb-3.text-muted &copy;&nbsp;
+                    a(href="https://github.com/tdhungit", target="_blank") Jacky 2018

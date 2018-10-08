@@ -1,0 +1,225 @@
+extends ../layout
+
+block content
+    div#header.home
+        div.container
+            div.header-content
+                h1 I'm
+                    span.typed
+                p designer, developeur, photographer
+
+                ul.list-unstyled.list-social
+                    li
+                        a.ion-social-facebook(href="#")
+                    li
+                        a.ion-social-twitter(href="#")
+                    li
+                        a.ion-social-instagram(href="#")
+                    li
+                        a.ion-social-googleplus(href="#")
+                    li
+                        a.ion-social-tumblr(href="#")
+                    li
+                        a.ion-social-dribbble(href="#")
+
+    div#about.paddsection
+        div.container
+            div.row.justify-content-between
+                div.col-lg-4
+                    div.div-img-bg
+                        div.about-img
+                            img.img-responsive(src="/images/me.jpg", alt="me")
+
+                div.col-lg-7
+                    div.about-descr
+                        p.p-heading im a ux /ui designer austin based who loves clean, simple & unique design. i also enjoy crafting brand identities, icons, & ilustration work.
+                        p.separator To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family.English person.
+
+    div#services
+        div.container
+            div.services-carousel.owl-theme
+                div.services-block
+                    i.ion-ios-briefcase-outline
+                    span UI/UX DESIGN
+                    p.separator To an English person, it will seem like simplified English, told me what
+
+                div.services-block
+                    i.ion-ios-lightbulb-outline
+                    span BRAND IDENTITY
+                    p.separator To an English person, it will seem like simplified English, told me what
+
+                div.services-block
+                    i.ion-ios-color-wand-outline
+                    span WEB DESIGN
+                    p.separator To an English person, it will seem like simplified English, told me what
+
+                div.services-block
+                    i.ion-social-android-outline
+                    span MOBILE APPS
+                    p.separator To an English person, it will seem like simplified English, told me what
+
+                div.services-block
+                    i.ion-ios-analytics-outline
+                    span ANALYTICS
+                    p.separator To an English person, it will seem like simplified English, told me what
+
+                div.services-block
+                    i.ion-ios-camera-outline
+                    span PHOTOGRAPHY
+                    p.separator To an English person, it will seem like simplified English, told me what
+
+    div#portfolio.text-center.paddsection
+        div.container
+            div.section-title.text-center
+                h2 My Portfolio
+
+        div.container
+            div.row
+                div.col-md-12
+                    div.portfolio-list
+                        ul.nav.list-unstyled#portfolio-flters
+                            li.filter.filter-active(data-filter=".all") all
+                            li.filter(data-filter=".branding") branding
+                            li.filter(data-filter=".mockups") mockups
+                            li.filter(data-filter=".uikits") uikits
+                            li.filter(data-filter=".webdesign") web design
+                            li.filter(data-filter=".photography") photography
+
+                    div.portfolio-container
+                        div.col-lg-4.col-md-6.portfolio-thumbnail.all.branding.uikits.webdesign
+                            a.popup-img(href="/images/portfolio/1.jpg")
+                                img(src="/images/portfolio/1.jpg", alt="img")
+
+                        div.col-lg-4.col-md-6.portfolio-thumbnail.all.branding.uikits.photography
+                            a.popup-img(href="/images/portfolio/2.jpg")
+                                img(src="/images/portfolio/2.jpg", alt="img")
+
+                        div.col-lg-4.col-md-6.portfolio-thumbnail.all.branding.uikits.photographyn
+                            a.popup-img(href="/images/portfolio/3.jpg")
+                                img(src="/images/portfolio/3.jpg", alt="img")
+
+                        div.col-lg-4.col-md-6.portfolio-thumbnail.all.branding.uikits.photography
+                            a.popup-img(href="/images/portfolio/4.jpg")
+                                img(src="/images/portfolio/2.jpg", alt="img")
+
+                        div.col-lg-4.col-md-6.portfolio-thumbnail.all.branding.uikits.photography
+                            a.popup-img(href="/images/portfolio/5.jpg")
+                                img(src="/images/portfolio/2.jpg", alt="img")
+
+                        div.col-lg-4.col-md-6.portfolio-thumbnail.all.branding.uikits.webdesign
+                            a.popup-img(href="/images/portfolio/6.jpg")
+                                img(src="/images/portfolio/6.jpg", alt="img")
+
+    div#journal.text-left.paddsection
+        div.container
+            div.journal-block
+                div.row
+                    div.col-lg-4.col.col-md-6
+                        div.journal-info
+                            a(href="")
+                                img.img-responsive(src="/images/blog-post-1.jpg", alt="img")
+
+                            div.journal-txt
+                                h4
+                                    a(href="") SO LETS MAKE THE MOST IS BEAUTIFUL
+
+                                p.separator To an English person, it will seem like simplified English
+
+                    div.col-lg-4.col.col-md-6
+                        div.journal-info
+                            a(href="")
+                                img.img-responsive(src="/images/blog-post-2.jpg", alt="img")
+
+                            div.journal-txt
+                                h4
+                                    a(href="") WE'RE GONA MAKE DREAMS COMES
+
+                                p.separator To an English person, it will seem like simplified English
+
+                    div.col-lg-4.col.col-md-6
+                        div.journal-info
+                            a(href="")
+                                img.img-responsive(src="/images/blog-post-3.jpg", alt="img")
+
+                            div.journal-txt
+                                h4
+                                    a(href="") NEW LIFE CIVILIZATIONS TO BOLDLY
+
+                                p.separator To an English person, it will seem like simplified English
+
+    div#contact.paddsection
+        div.container
+            div.contact-block1
+                div.row
+                    div.col-lg-6
+                        div.contact-contact
+                            h2.mb-30 GET IN TOUCH
+
+                            ul.contact-details
+                                li
+                                    span 23 Main, Street
+                                li
+                                    span New York, United States
+                                li
+                                    span +88 01912704287
+                                li
+                                    span example@example.com
+
+                    div.col-lg-6
+                        form.contactForm(action="", method="post", role="form")
+                            div.row
+                                div#sendmessage Your message has been sent. Thank you!
+                                div#errormessage
+
+                                div.col-lg-6
+                                    div.form-group.contact-block1
+                                        input#name.form-control(type="text" name="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars")
+                                        div.validation
+
+                                div.col-lg-6
+                                    div.form-group
+                                        input#email.form-control(type="email" name="email" placeholder="Your Email" data-msg="Please enter a valid email")
+                                        div.validation
+
+                                div.col-lg-12
+                                    div.form-group
+                                        input#subject.form-control(type="text" name="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject")
+                                        div.validation
+
+                                div.col-lg-12
+                                    div.form-group
+                                        textarea#message.form-control(name="message" placeholder="Message" rows="12" data-msg="Please enter at least 8 chars of subject")
+                                        div.validation
+
+                                div.col-lg-12
+                                    button.btn.btn-defeault.btn-send(type="submit") Send message
+
+    div#footer.text-center
+        div.container
+            div.socials-media.text-center
+                ul.list-unstyled
+                    li
+                        a(href="#")
+                            i.icon-social-facebook
+                    li
+                        a(href="#")
+                            i.icon-social-twitter
+                    li
+                        a(href="#")
+                            i.icon-social-instagram
+                    li
+                        a(href="#")
+                            i.icon-social-googleplus
+                    li
+                        a(href="#")
+                            i.icon-social-tumblr
+                    li
+                        a(href="#")
+                            i.icon-social-dribbble
+
+            p &copy; Copyrights Folio. All rights reserved.
+
+            div.credits
+                Designed by
+                a(href="https://bootstrapmade.com/") BootstrapMade
+
