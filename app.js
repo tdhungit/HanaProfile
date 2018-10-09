@@ -7,11 +7,13 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
+const config = require('./config/config');
 
 const app = express();
+const theme = config && config.theme || 'hana';
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'themes/' + theme + '/jade'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
@@ -23,7 +25,8 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'themes/' + theme + '/static')));
+app.use('/files', express.static(path.join(__dirname, 'files')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);

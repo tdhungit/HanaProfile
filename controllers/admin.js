@@ -1,6 +1,11 @@
+const View = require('../core/View');
+
+const v = new View('admin');
+
 module.exports = {
 
     index(req, res, next) {
-        res.send('respond with a resource');
+
+        v.render('index', res, {});
     }
 };

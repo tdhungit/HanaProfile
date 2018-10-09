@@ -3,7 +3,7 @@ extends ../layout
 block content
     div#login.paddsection
         div.container
-            form.form-signin(action="/admin/auth", method="post", style="max-width:400px;margin:0 auto;")
+            form.form-signin(action="#{base_url}/admin/auth", method="post", style="max-width:400px;margin:0 auto;")
                 h1.h3.mb-3.font-weight-normal Please Login
 
                 label.sr-only Username
