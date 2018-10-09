@@ -1,24 +1,23 @@
 const bcrypt = require('bcrypt');
 
-const View = require('../core/View');
+const BaseController = require('../core/BaseController');
 const User = require('../models/User');
 
-const v = new View('index');
-
-module.exports = {
+class Index extends BaseController {
 
     index(req, res, next) {
-
-        v.render('index', res, {title: 'Express'});
-    },
+        this.render('index', res, {title: 'Express'});
+    }
 
     install(req, res, next) {
+
+        const self = this;
 
         User.getByUsername('jacky').then(function (result) {
 
             if (result && result.id) {
 
-                v.render('install', res, {
+                self.render('install', res, {
                     error: 0,
                     message: 'Installed! Please login with account: jacky/jacky',
                     id: result.id
@@ -32,7 +31,7 @@ module.exports = {
                     password: hash
                 }).then(function (result) {
 
-                    v.render('install', res, {
+                    self.render('install', res, {
                         error: 0,
                         message: 'Installed successful! Please login with account: jacky/jacky',
                         id: result.id
@@ -47,4 +46,6 @@ module.exports = {
             res.send('QUERY ERROR!');
         });
     }
-};
+}
+
+module.exports = new Index();

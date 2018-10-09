@@ -1,15 +1,13 @@
 const bcrypt = require('bcrypt');
 
-const View = require('../core/View');
+const BaseController = require('../core/BaseController');
 const User = require('../models/User');
 
-const v = new View('auth');
-
-module.exports = {
+class Auth extends BaseController {
 
     index(req, res, next) {
-        v.render('index', res, {title: 'Express'});
-    },
+        this.render('index', res, {title: 'Login'});
+    }
 
     doLogin(req, res, next) {
 
@@ -23,7 +21,10 @@ module.exports = {
                         if (error || compared !== true) {
                             res.send('Error!');
                         } else {
-                            res.send('OK!');
+                            req.session.user_id = result.id;
+                            req.session.username = result.username;
+
+                            req.redirect('/admin');
                         }
                     });
                 } else {
@@ -33,4 +34,6 @@ module.exports = {
             });
         }
     }
-};
+}
+
+module.exports = new Auth();

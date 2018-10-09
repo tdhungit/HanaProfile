@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const index = require('../controllers/index');
-const auth = require('../controllers/auth');
+const Index = require('../controllers/Index');
 
 /* GET home page. */
-router.get('/', index.index);
+router.get('/', Index.index.bind(Index));
 
-router.get('/install', index.install);
-
-router.get('/admin/auth', auth.index);
-router.post('/admin/auth', auth.doLogin);
+router.get('/install', Index.install.bind(Index));
 
 module.exports = router;
