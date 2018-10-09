@@ -15,4 +15,16 @@ class Setting extends BaseModel {
             'value'
         ];
     }
+
+    getSetting(name) {
+        const data = {name: name};
+        return this.getByData(data);
+    }
+
+    setSystemSettings() {
+        const data = {category: 'system'};
+        return this.getByData(data, true);
+    }
 }
+
+module.exports = new Setting();

@@ -18,6 +18,8 @@ html(lang="en")
 
         link(rel="stylesheet", href="#{static_url}/css/style.css")
         link(href="#{static_url}/css/responsive.css", rel="stylesheet")
+        link(href="#{static_url}/css/admin.css", rel="stylesheet")
+
         link(rel="shortcut icon" href="#{static_url}/images/favicon.png")
     body
         nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
@@ -26,18 +28,22 @@ html(lang="en")
 
             ul.navbar-nav.px-3
                 li.nav-item.text-nowrap
-                    a.nav-link(href="#{admin_url}/logout")
+                    a.nav-link(href="#{admin_url}/logout") Logout
 
-            div.container-fluid
-                div.row
-                    nav.col-md-2.d-none.d-md-block.bg-light.sidebar
-                        div.sidebar-sticky
-                            ul.nav.flex-column
-                                li.nav-item
-                                    a.nav-link.active(href="#{admin_url}")
-                                        span(data-feather="home")
-                                        Dashboard
-                                        span.sr-only (current)
+        div.container-fluid
+            div.row
+                nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+                    div.sidebar-sticky
+                        ul.nav.flex-column
+                            li.nav-item
+                                a.nav-link.active(href="#{admin_url}")
+                                    span(data-feather="home")
+                                    = 'Index'
+                                    span.sr-only (current)
+                            li.nav-item
+                                a.nav-link.active(href="#{admin_url}/settings")
+                                    span(data-feather="home")
+                                    = 'Settings'
 
         main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
             block content
@@ -50,4 +56,5 @@ html(lang="en")
         script(src="#{static_url}/lib/magnific-popup/magnific-popup.min.js")
         script(src="#{static_url}/lib/isotope/isotope.pkgd.min.js")
         script(src="#{static_url}/contactform/contactform.js")
+        script(src="https://unpkg.com/feather-icons/dist/feather.min.js")
         script(src="#{static_url}/js/main.js")

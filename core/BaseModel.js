@@ -1,6 +1,6 @@
 const db = require('../config/database');
 const Promise = require('bluebird');
-var _ = require('underscore');
+const _ = require('underscore');
 
 class BaseModel {
 
@@ -14,7 +14,7 @@ class BaseModel {
         return ['id', 'date_created'];
     }
 
-    query(sql, params = []) {
+    query(sql, params = [], ret = {}) {
 
         return new Promise((resolve, reject) => {
             this.db.run(sql, params, function (error) {
@@ -23,7 +23,9 @@ class BaseModel {
                     console.log(error);
                     reject(error);
                 } else {
-                    resolve({error: 0});
+                    ret.error = 0;
+                    ret.id = ret.id || this.lastID;
+                    resolve(ret);
                 }
             });
         });
@@ -36,7 +38,7 @@ class BaseModel {
         let insert_fields = '';
         let insert_values = '';
 
-        fields.forEach(function (field) {
+        _.each(fields, (field) => {
 
             if (data[field]) {
                 insert_fields += field + ',';
@@ -52,23 +54,40 @@ class BaseModel {
 
         const insert_sql = 'INSERT INTO ' + this.table_name + '(' + insert_fields + ') VALUES (' + insert_values + ');';
 
-        return new Promise((resolve, reject) => {
-
-            this.db.run(insert_sql, function (error) {
-
-                if (error) {
-                    console.log('Error insert ' + insert_sql);
-                    console.log(error);
-                    reject(error);
-                } else {
-                    resolve({id: this.lastID});
-                }
-            });
-        });
+        return this.query(insert_sql);
     }
 
-    update(data) {
+    update(id, data) {
 
+        const fields = this.getFields();
+        let update_fields = '';
+        let params = [];
+
+        _.each(fields, (field) => {
+
+            if (data[field] && field !== 'id') {
+                update_fields += ' ' + field + ' = ?,';
+                params.push(data[field]);
+            }
+        });
+
+        if (update_fields) {
+            update_fields = update_fields.substr(0, update_fields.length - 1);
+        }
+
+        const sql = 'UPDATE ' + this.table_name + ' SET ' + update_fields + ' WHERE id = ?';
+        params.push(id);
+
+        return this.query(sql, params, {id: id});
+    }
+
+    save(data) {
+
+        if (data.id) {
+            return this.update(data.id, data);
+        }
+
+        return this.insert(data);
     }
 
     get(sql, params = []) {

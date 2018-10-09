@@ -5,6 +5,13 @@ const User = require('../models/User');
 
 class Index extends BaseController {
 
+    constructor() {
+        super();
+
+        this.index = this.index.bind(this);
+        this.install = this.install.bind(this);
+    }
+
     index(req, res, next) {
         this.render('index', res, {title: 'Express'});
     }

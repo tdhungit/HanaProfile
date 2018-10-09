@@ -5,6 +5,14 @@ const User = require('../models/User');
 
 class Auth extends BaseController {
 
+    constructor() {
+        super();
+
+        this.index = this.index.bind(this);
+        this.doLogin = this.doLogin.bind(this);
+        this.logout = this.logout.bind(this);
+    };
+
     index(req, res, next) {
         this.render('index', res, {title: 'Login'});
     }
@@ -24,15 +32,20 @@ class Auth extends BaseController {
                             req.session.user_id = result.id;
                             req.session.username = result.username;
 
-                            req.redirect('/admin');
+                            res.redirect('/admin');
                         }
                     });
                 } else {
 
-                    req.redirect('/admin/auth');
+                    res.redirect('/admin/auth');
                 }
             });
         }
+    }
+
+    logout(req, res, next) {
+        req.session.destroy();
+        res.redirect('/');
     }
 }
 

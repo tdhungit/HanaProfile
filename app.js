@@ -1,7 +1,9 @@
 const createError = require('http-errors');
 const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+
 const path = require('path');
 const logger = require('morgan');
 
@@ -18,13 +20,15 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+//app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
     secret: 'HANA-2012-HanaSecretGarden',
     resave: true,
     saveUninitialized: true
 }));
 app.use(cookieParser());
+
 app.use('/static', express.static(path.join(__dirname, 'themes/' + theme + '/static')));
 app.use('/files', express.static(path.join(__dirname, 'files')));
 

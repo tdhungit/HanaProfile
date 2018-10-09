@@ -1,0 +1,24 @@
+extends ../admin
+
+block content
+    div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2 Settings
+
+        div.btn-toolbar.mb-2.mb-md-0
+            div.btn-group.mr-2
+                a.btn.btn-sm.btn-outline-secondary(href="#{admin_url}/settings-apply") Apply Settings
+
+    form(action="#{base_url}/admin/settings", method="post")
+        div.card
+            div.card-header System settings
+            div.card-body
+                div.form-group
+                    label Page title
+                    input.form-control(type="text", name="settings[title]")
+
+                div.form-group
+                    label Theme
+                    input.form-control(type="text", name="settings[theme]")
+
+            div.card-footer
+                button.btn.btn-primary(type="submit") Save

@@ -7,9 +7,13 @@ const Auth = require('../controllers/Auth');
 
 const router = express.Router();
 
-router.get('/', authenticate, Admin.index.bind(Admin));
+router.get('/auth', Auth.index);
+router.post('/auth', Auth.doLogin);
+router.get('/logout', Auth.logout);
 
-router.get('/auth', Auth.index.bind(Auth));
-router.post('/auth', Auth.doLogin.bind(Auth));
+router.get('/', authenticate, Admin.index);
+router.get('/settings', authenticate, Admin.settings);
+router.post('/settings', authenticate, Admin.saveSettings);
+router.get('/settings-apply', authenticate, Admin.applySettings);
 
 module.exports = router;
