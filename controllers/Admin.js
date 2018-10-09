@@ -14,6 +14,8 @@ class Admin extends AdminController {
         this.settings = this.settings.bind(this);
         this.saveSettings = this.saveSettings.bind(this);
         this.applySettings = this.applySettings.bind(this);
+        this.profile = this.profile.bind(this);
+        this.updateProfile = this.updateProfile.bind(this);
     }
 
     index(req, res, next) {
@@ -67,6 +69,28 @@ class Admin extends AdminController {
                 res.redirect('/admin/settings');
             });
         });
+    }
+
+    profile(req, res, next) {
+        this.render('profile', res, {});
+    }
+
+    uploadProfileFields() {
+        return this.upload.getUpload().fields([
+            {
+                name: 'avatar',
+                maxCount: 1
+            },
+            {
+                name: 'cover',
+                maxCount: 1
+            }
+        ]);
+    }
+
+    updateProfile(res, req, next) {
+        console.log(res.files);
+        req.send('OK!');
     }
 }
 

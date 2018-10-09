@@ -1,0 +1,28 @@
+extends ../admin
+
+block content
+    div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2 Profile
+
+    form(action="#{base_url}/admin/profile", method="post", enctype="multipart/form-data")
+        div.card
+            div.card-header Update Profile
+            div.card-body
+                div.form-group
+                    label Name
+                    input.form-control(type="text", name="profile[name]")
+
+                div.form-group
+                    label Full name
+                    input.form-control(type="text", name="profile[full_name]")
+
+                div.form-group
+                    label Avatar
+                    input.form-control(type="file", name="avatar")
+
+                div.form-group
+                    label Cover image
+                    input.form-control(type="file", name="cover")
+
+            div.card-footer
+                button.btn.btn-primary(type="submit") Save
