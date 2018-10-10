@@ -16,6 +16,16 @@ class AdminController extends BaseController {
         this.config_path = path.join(__dirname, '../themes/' + theme + '/config/' + this.constructor.name.toLowerCase());
     }
 
+    getModel(modelName) {
+        const model_path = path.join(__dirname, '../models/' + modelName);
+        return require(model_path);
+    }
+
+    saveRecord(modelName, data) {
+        const model = this.getModel(modelName);
+        return model.save(data);
+    }
+
     save(req, res, next) {
 
     }

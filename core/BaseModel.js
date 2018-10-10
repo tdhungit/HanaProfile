@@ -20,6 +20,7 @@ class BaseModel {
             this.db.run(sql, params, function (error) {
                 if (error) {
                     console.log('Error running sql ' + sql);
+                    console.log(params);
                     console.log(error);
                     reject(error);
                 } else {
@@ -37,12 +38,14 @@ class BaseModel {
 
         let insert_fields = '';
         let insert_values = '';
+        let params = [];
 
         _.each(fields, (field) => {
 
             if (data[field]) {
                 insert_fields += field + ',';
-                insert_values += JSON.stringify(data[field]) + ',';
+                insert_values += '?,';
+                params.push(data[field]);
             }
         });
 
@@ -54,7 +57,7 @@ class BaseModel {
 
         const insert_sql = 'INSERT INTO ' + this.table_name + '(' + insert_fields + ') VALUES (' + insert_values + ');';
 
-        return this.query(insert_sql);
+        return this.query(insert_sql, params);
     }
 
     update(id, data) {

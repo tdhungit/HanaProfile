@@ -10,6 +10,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 const config = require('./config/config');
+const View = require('./core/View');
 
 const app = express();
 const theme = config && config.theme || 'hana';
@@ -48,7 +49,9 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+
+    const v = new View();
+    v.render('error', res);
 });
 
 module.exports = app;

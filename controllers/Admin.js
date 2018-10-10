@@ -93,22 +93,29 @@ class Admin extends AdminController {
             }
         ]);
 
-        upload(req, res, function (error) {
+        upload(req, res, (error) => {
 
             if (error) {
                 console.log(error);
+                res.send('Error!');
             } else {
 
                 const avatar = req.files.avatar && req.files.avatar[0] || null;
                 const cover = req.files.cover && req.files.cover[0] || null;
 
                 if (avatar && cover) {
+                    let data = req.body.profile;
+                    data.avatar = avatar.filename;
+                    data.cover = cover.filename;
 
+                    this.saveRecord('Profile', data).then((result) => {
+                        res.send('OK!');
+                    });
+                } else {
+                    res.send('Error upload!');
                 }
             }
         });
-
-        res.send('OK!');
     }
 }
 

@@ -18,6 +18,11 @@
     "label": "Avatar"
   },
   {
+    "type": "file",
+    "name": "cover",
+    "label": "Cover"
+  },
+  {
     "type": "text",
     "name": "profile[phone]",
     "label": "Phone"
@@ -38,12 +43,12 @@
     "label": "Email Alt"
   },
   {
-    "type": "text",
+    "type": "multitext",
     "name": "profile[title]",
     "label": "Title"
   },
   {
-    "type": "text",
+    "type": "multitext",
     "name": "profile[social]",
     "label": "Social"
   },

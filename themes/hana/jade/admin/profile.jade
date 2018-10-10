@@ -4,7 +4,7 @@ block content
     div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
         h1.h2 Profile
 
-    form(action="#{base_url}/admin/profile", method="post", enctype="multipart/form-data")
+    form#profileForm(action="#{base_url}/admin/profile", method="post", enctype="multipart/form-data")
         div.card
             div.card-header Update Profile
             div.card-body
@@ -17,6 +17,49 @@ block content
                             class="form-control " + (layout.class || ''),
                             id=layout.id
                             )
+                        - } else if (layout.type === 'multitext') {
+
+                            - if (layout.name === 'profile[title]') {
+
+                                div.form-group
+                                    ul
+                                        li(v-for="item in title_arr") {{ item }}
+
+                                div.form-row
+                                    div.col-7
+                                        input(
+                                        type="text",
+                                        class="form-control " + (layout.class || ''),
+                                        id="title",
+                                        v-model="title"
+                                        )
+                                        input(type="hidden", name=layout.name, id="titleValue")
+                                    div.col
+                                        button.btn.btn-outline-secondary(type="button", "@click"="addTitle()") Add
+                            - } else if (layout.name === 'profile[social]') {
+
+                                div.form-group
+                                    ul
+                                        li(v-for="item in social_arr") {{ item }}
+
+                                div.form-row
+                                    div.col-3
+                                        select.form-control(v-model="social", style="height: 50px")
+                                            option(value="facebook") Facebook
+                                            option(value="twitter") Twitter
+                                            option(value="linkedin") LinkedIn
+                                    div.col-7
+                                        input(
+                                        type="text",
+                                        class="form-control " + (layout.class || ''),
+                                        id="socialLink",
+                                        v-model="socialLink"
+                                        )
+                                        input(type="hidden", name=layout.name, id="socialValue")
+                                    div.col
+                                        button.btn.btn-outline-secondary(type="button", "@click"="addSocial()") Add
+                            -}
+
                         - } else {
                             input(
                             type= layout.type,
@@ -29,3 +72,45 @@ block content
 
             div.card-footer
                 button.btn.btn-primary(type="submit") Save
+
+    script.
+        console.log('Script');
+        var vueApp = new Vue({
+            el: '#profileForm',
+            data: {
+                title: '',
+                social: '',
+                socialLink: '',
+                title_arr: [],
+                social_arr: []
+            },
+            methods: {
+
+                addTitle() {
+
+                    if (this.title) {
+
+                        this.title_arr.push(this.title);
+                        this.title = '';
+
+                        jQuery('#titleValue').val(JSON.stringify(this.title_arr));
+                    }
+                },
+
+                addSocial() {
+
+                    if (this.social && this.socialLink) {
+
+                        this.social_arr.push({
+                            social: this.social,
+                            link: this.socialLink
+                        });
+
+                        this.social = '';
+                        this.socialLink = '';
+
+                        jQuery('#socialValue').val(JSON.stringify(this.social_arr));
+                    }
+                }
+            }
+        });
