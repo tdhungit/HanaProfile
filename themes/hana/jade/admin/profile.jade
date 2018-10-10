@@ -8,21 +8,24 @@ block content
         div.card
             div.card-header Update Profile
             div.card-body
-                div.form-group
-                    label Name
-                    input.form-control(type="text", name="profile[name]")
-
-                div.form-group
-                    label Full name
-                    input.form-control(type="text", name="profile[full_name]")
-
-                div.form-group
-                    label Avatar
-                    input.form-control(type="file", name="avatar")
-
-                div.form-group
-                    label Cover image
-                    input.form-control(type="file", name="cover")
+                each layout in layouts
+                    div.form-group
+                        label #{layout.label}
+                        - if (layout.type === 'textarea') {
+                            textarea(
+                            name=layout.name,
+                            class="form-control " + (layout.class || ''),
+                            id=layout.id
+                            )
+                        - } else {
+                            input(
+                            type= layout.type,
+                            name= layout.name,
+                            class="form-control " + (layout.class || ''),
+                            id=layout.id,
+                            placeholder=layout.placeholder
+                            )
+                        - }
 
             div.card-footer
                 button.btn.btn-primary(type="submit") Save

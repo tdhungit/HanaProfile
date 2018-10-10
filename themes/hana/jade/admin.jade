@@ -16,6 +16,9 @@ html(lang="en")
         link(href="#{static_url}/lib/magnific-popup/magnific-popup.css", rel="stylesheet")
         link(href="#{static_url}/lib/hover/hover.min.css", rel="stylesheet")
 
+        each css in cssCustom
+            link(href=css, rel="stylesheet")
+
         link(rel="stylesheet", href="#{static_url}/css/style.css")
         link(href="#{static_url}/css/responsive.css", rel="stylesheet")
         link(href="#{static_url}/css/admin.css", rel="stylesheet")
@@ -61,4 +64,8 @@ html(lang="en")
         script(src="#{static_url}/lib/isotope/isotope.pkgd.min.js")
         script(src="#{static_url}/contactform/contactform.js")
         script(src="https://unpkg.com/feather-icons/dist/feather.min.js")
+
+        each js in jsCustom
+            script(src=js)
+
         script(src="#{static_url}/js/main.js")

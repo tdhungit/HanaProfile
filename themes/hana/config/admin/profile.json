@@ -1,0 +1,70 @@
+[
+  {
+    "type": "text",
+    "name": "profile[name]",
+    "label": "Name",
+    "placeholder": "",
+    "id": "",
+    "class": ""
+  },
+  {
+    "type": "text",
+    "name": "profile[full_name]",
+    "label": "Full name"
+  },
+  {
+    "type": "file",
+    "name": "avatar",
+    "label": "Avatar"
+  },
+  {
+    "type": "text",
+    "name": "profile[phone]",
+    "label": "Phone"
+  },
+  {
+    "type": "text",
+    "name": "profile[phone_alt]",
+    "label": "Phone Alt"
+  },
+  {
+    "type": "email",
+    "name": "profile[email]",
+    "label": "Email"
+  },
+  {
+    "type": "email",
+    "name": "profile[email_alt]",
+    "label": "Email Alt"
+  },
+  {
+    "type": "text",
+    "name": "profile[title]",
+    "label": "Title"
+  },
+  {
+    "type": "text",
+    "name": "profile[social]",
+    "label": "Social"
+  },
+  {
+    "type": "textarea",
+    "name": "profile[summary]",
+    "label": "Summary"
+  },
+  {
+    "type": "textarea",
+    "name": "profile[description]",
+    "label": "Description"
+  },
+  {
+    "type": "textarea",
+    "name": "profile[foot_message]",
+    "label": "Foot Message"
+  },
+  {
+    "type": "textarea",
+    "name": "profile[address]",
+    "label": "Address"
+  }
+]

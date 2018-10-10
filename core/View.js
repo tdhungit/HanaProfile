@@ -1,9 +1,12 @@
 const config = require('../config/config');
+const _ = require('underscore');
 
 class View {
 
     constructor(controller) {
         this.controller = controller;
+        this.css = [];
+        this.js = [];
     }
 
     setController(controller) {
@@ -27,7 +30,18 @@ class View {
         data.static_url = data.base_url + '/static';
         data.file_url = data.base_url + '/files';
 
+        data.cssCustom = this.css;
+        data.jsCustom = this.js;
+
         return data;
+    }
+
+    setCss(css) {
+        this.css = css;
+    }
+
+    setJs(js) {
+        this.js = js;
     }
 
     render(template, res, data) {

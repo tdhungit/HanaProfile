@@ -72,11 +72,17 @@ class Admin extends AdminController {
     }
 
     profile(req, res, next) {
-        this.render('profile', res, {});
+
+        const layouts = require(this.config_path + '/profile');
+
+        this.setJs(['https://cdn.jsdelivr.net/npm/vue']);
+
+        this.render('profile', res, {layouts: layouts});
     }
 
-    uploadProfileFields() {
-        return this.upload.getUpload().fields([
+    updateProfile(req, res, next) {
+
+        const upload = this.upload.getUpload().fields([
             {
                 name: 'avatar',
                 maxCount: 1
@@ -86,11 +92,23 @@ class Admin extends AdminController {
                 maxCount: 1
             }
         ]);
-    }
 
-    updateProfile(res, req, next) {
-        console.log(res.files);
-        req.send('OK!');
+        upload(req, res, function (error) {
+
+            if (error) {
+                console.log(error);
+            } else {
+
+                const avatar = req.files.avatar && req.files.avatar[0] || null;
+                const cover = req.files.cover && req.files.cover[0] || null;
+
+                if (avatar && cover) {
+
+                }
+            }
+        });
+
+        res.send('OK!');
     }
 }
 

@@ -16,6 +16,6 @@ router.get('/settings', authenticate, Admin.settings);
 router.post('/settings', authenticate, Admin.saveSettings);
 router.get('/settings-apply', authenticate, Admin.applySettings);
 router.get('/profile', authenticate, Admin.profile);
-router.post('/profile', authenticate, Admin.uploadProfileFields(), Admin.updateProfile);
+router.post('/profile', authenticate, Admin.updateProfile);
 
 module.exports = router;

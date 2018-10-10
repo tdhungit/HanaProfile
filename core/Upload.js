@@ -5,17 +5,42 @@ class Upload {
 
     constructor(dir = 'files/') {
         this.setDir(dir);
+        this.setFilter(function (req, file, callback) {
+            //const ext = path.extname(file.originalname);
+            callback(null, true);
+        });
     }
 
     setDir(dir) {
-        const dirPath = path.join(__dirname, '../' + dir);
 
-        this.upload_dir = dirPath;
-        this.upload = multer({dest: this.upload_dir});
+        this.upload_dir = path.join(__dirname, '../' + dir);
+        const self = this;
+
+        this.storage = multer.diskStorage({
+
+            destination: function (req, file, callback) {
+                callback(null, self.upload_dir);
+            },
+
+            filename: function (req, file, callback) {
+
+                const ext = path.extname(file.originalname);
+                const name = file.fieldname + '_' + Date.now() + ext;
+
+                callback(null, name);
+            }
+        });
+    }
+
+    setFilter(fileFilter) {
+        this.fileFilter = fileFilter;
     }
 
     getUpload() {
-        return this.upload;
+        return multer({
+            storage: this.storage,
+            fileFilter: this.fileFilter
+        });
     }
 }
 

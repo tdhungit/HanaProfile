@@ -6,6 +6,14 @@ class BaseController {
         this.view = new View(this.constructor.name.toLowerCase());
     }
 
+    setCss(css) {
+        this.view.setCss(css);
+    }
+
+    setJs(js) {
+        this.view.setJs(js);
+    }
+
     render(template, res, data) {
         this.view.render(template, res, data);
     }
