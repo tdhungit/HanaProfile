@@ -5,6 +5,7 @@ const authenticate = require('../core/Authenticate');
 const Admin = require('../controllers/Admin');
 const Auth = require('../controllers/Auth');
 const Skills = require('../controllers/Skills');
+const Experience = require('../controllers/Experiences');
 
 const router = express.Router();
 
@@ -23,5 +24,10 @@ router.get('/skills', authenticate, Skills.list);
 router.post('/skills/save', authenticate, Skills.save);
 router.get('/skills/create', authenticate, Skills.edit);
 router.get('/skills/edit/:id', authenticate, Skills.edit);
+
+router.get('/experiences', authenticate, Experience.list);
+router.post('/experiences/save', authenticate, Experience.save);
+router.get('/experiences/create', authenticate, Experience.edit);
+router.get('/experiences/edit/:id', authenticate, Experience.edit);
 
 module.exports = router;

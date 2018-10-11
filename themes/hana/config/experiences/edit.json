@@ -1,0 +1,32 @@
+[
+  {
+    "type": "text",
+    "name": "name",
+    "label": "Name"
+  },
+  {
+    "type": "text",
+    "name": "type",
+    "label": "Type"
+  },
+  {
+    "type": "text",
+    "name": "workat",
+    "label": "Work At"
+  },
+  {
+    "type": "text",
+    "name": "date_start",
+    "label": "Start"
+  },
+  {
+    "type": "text",
+    "name": "date_end",
+    "label": "End"
+  },
+  {
+    "type": "text",
+    "name": "description",
+    "label": "Description"
+  }
+]
