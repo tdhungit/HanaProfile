@@ -52,7 +52,13 @@ class View {
             path = this.controller + '/' + template;
         }
 
-        res.render(path, this.setData(data));
+        return this.renderTpl(path, res, data)
+    }
+
+    renderTpl(template, res, data) {
+
+        res.render(template, this.setData(data));
+        return true;
     }
 }
 

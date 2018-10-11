@@ -1,5 +1,17 @@
 # Hana Profile
 
+## Feature
+* Create profile page
+* Admin page
+** Setting page
+** Update profile
+** Skills management
+** Experiences management
+** Portfolio management
+** Blog management
+** Life todo list management
+** Pages management
+
 ## Install
 * Install nodejs
 * Install git

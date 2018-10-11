@@ -3,11 +3,6 @@ $(document).ready(function () {
 
     'use strict';
 
-    // ========================================================================= //
-    //  //SMOOTH SCROLL
-    // ========================================================================= //
-
-
     $(document).on("scroll", onScroll);
 
     $('a[href^="#"]').on('click', function (e) {
@@ -35,7 +30,6 @@ $(document).ready(function () {
         });
     });
 
-
     function onScroll(event) {
         if ($('.home').length) {
             var scrollPos = $(document).scrollTop();
@@ -45,11 +39,6 @@ $(document).ready(function () {
             });
         }
     }
-
-    // ========================================================================= //
-    //  //NAVBAR SHOW - HIDE
-    // ========================================================================= //
-
 
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
@@ -63,17 +52,9 @@ $(document).ready(function () {
         }
     });
 
-    // ========================================================================= //
-    //  // RESPONSIVE MENU
-    // ========================================================================= //
-
     $('.responsive').on('click', function (e) {
         $('.nav-menu').slideToggle();
     });
-
-    // ========================================================================= //
-    //  Typed Js
-    // ========================================================================= //
 
     var typed = $(".typed");
 
@@ -85,12 +66,6 @@ $(document).ready(function () {
         });
     });
 
-
-    // ========================================================================= //
-    //  Owl Carousel Services
-    // ========================================================================= //
-
-
     $('.services-carousel').owlCarousel({
         autoplay: true,
         loop: true,
@@ -100,12 +75,6 @@ $(document).ready(function () {
         responsiveClass: true,
         responsive: {0: {items: 1}, 768: {items: 2}, 900: {items: 4}}
     });
-
-
-    // ========================================================================= //
-    //  Porfolio isotope and filter
-    // ========================================================================= //
-
 
     var portfolioIsotope = $('.portfolio-container').isotope({
         itemSelector: '.portfolio-thumbnail',
@@ -118,11 +87,6 @@ $(document).ready(function () {
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
-
-
-    // ========================================================================= //
-    //  magnificPopup
-    // ========================================================================= //
 
     var magnifPopup = function () {
         $('.popup-img').magnificPopup({
@@ -150,9 +114,7 @@ $(document).ready(function () {
         });
     };
 
-
     // Call the functions
     magnifPopup();
 
-    feather.replace();
 });

@@ -20,9 +20,8 @@ app.set('views', path.join(__dirname, 'themes/' + theme + '/jade'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(express.json());
-//app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(session({
     secret: 'HANA-2012-HanaSecretGarden',
     resave: true,

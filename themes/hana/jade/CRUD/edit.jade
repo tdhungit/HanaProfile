@@ -1,0 +1,28 @@
+extends ../admin
+
+block content
+    div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2= model
+
+    form(action="#{admin_url}/#{controller}/save", method="post")
+        div.card
+            div.card-header= headerTitle
+            div.card-body
+                each layout in layouts
+                    div.form-group
+                        label #{layout.label}
+
+                        - if (layout.type === 'select') {
+
+                        - } else {
+
+                            input(
+                            type=layout.type,
+                            name=layout.name,
+                            class="form-control " + layout.class
+                            placeholder=layout.placeholder
+                            )
+                        - }
+
+            div.card-footer
+                button.btn.btn-primary(type="submit") Save

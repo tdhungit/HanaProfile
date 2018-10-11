@@ -1,0 +1,37 @@
+extends ../admin
+
+block content
+    div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2= model
+
+        div.btn-toolbar.mb-2.mb-md-0
+            div.btn-group.mr-2
+                a(href="#{admin_url}/#{controller}/create").px-5
+                    i.fas.fa-plus
+                    = ' Create'
+
+    div.card
+        div.card-header List
+        div.card-body
+            div.table-responsive
+                table.table.table-bordered.table-striped
+                    thead
+                        tr
+                            each layout in layouts
+                                th= layout.label
+
+                            th Action
+
+                    tbody
+                        each record in records
+                            tr
+                                each layout in layouts
+                                    td= record[layout.name]
+
+                                td
+                                    a.px-2(href="")
+                                        i.fas.fa-eye
+                                    a.px-2(href="")
+                                        i.fas.fa-edit
+                                    a.px-2(href="")
+                                        i.fas.fa-trash-alt
