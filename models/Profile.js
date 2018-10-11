@@ -26,6 +26,15 @@ class Profile extends BaseModel {
             "address"
         ];
     }
+
+    save(data) {
+        data.id = 1;
+        return super.save(data);
+    }
+
+    getProfile() {
+        return this.getById(1);
+    }
 }
 
 module.exports = new Profile();

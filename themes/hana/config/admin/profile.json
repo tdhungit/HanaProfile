@@ -3,6 +3,7 @@
     "type": "text",
     "name": "profile[name]",
     "label": "Name",
+    "value": "name",
     "placeholder": "",
     "id": "",
     "class": ""
@@ -10,66 +11,79 @@
   {
     "type": "text",
     "name": "profile[full_name]",
-    "label": "Full name"
+    "label": "Full name",
+    "value": "full_name"
   },
   {
-    "type": "file",
+    "type": "image",
     "name": "avatar",
-    "label": "Avatar"
+    "label": "Avatar",
+    "value": "avatar"
   },
   {
-    "type": "file",
+    "type": "image",
     "name": "cover",
-    "label": "Cover"
+    "label": "Cover",
+    "value": "cover"
   },
   {
     "type": "text",
     "name": "profile[phone]",
-    "label": "Phone"
+    "label": "Phone",
+    "value": "phone"
   },
   {
     "type": "text",
     "name": "profile[phone_alt]",
-    "label": "Phone Alt"
+    "label": "Phone Alt",
+    "value": "phone_alt"
   },
   {
     "type": "email",
     "name": "profile[email]",
-    "label": "Email"
+    "label": "Email",
+    "value": "email"
   },
   {
     "type": "email",
     "name": "profile[email_alt]",
-    "label": "Email Alt"
+    "label": "Email Alt",
+    "value": "email_alt"
   },
   {
     "type": "multitext",
     "name": "profile[title]",
-    "label": "Title"
+    "label": "Title",
+    "value": "title"
   },
   {
     "type": "multitext",
     "name": "profile[social]",
-    "label": "Social"
+    "label": "Social",
+    "value": "social"
   },
   {
     "type": "textarea",
     "name": "profile[summary]",
-    "label": "Summary"
+    "label": "Summary",
+    "value": "summary"
   },
   {
     "type": "textarea",
     "name": "profile[description]",
-    "label": "Description"
+    "label": "Description",
+    "value": "description"
   },
   {
     "type": "textarea",
     "name": "profile[foot_message]",
-    "label": "Foot Message"
+    "label": "Foot Message",
+    "value": "foot_message"
   },
   {
     "type": "textarea",
     "name": "profile[address]",
-    "label": "Address"
+    "label": "Address",
+    "value": "address"
   }
 ]

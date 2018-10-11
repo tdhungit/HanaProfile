@@ -12,11 +12,12 @@ block content
                     div.form-group
                         label #{layout.label}
                         - if (layout.type === 'textarea') {
+
                             textarea(
                             name=layout.name,
                             class="form-control " + (layout.class || ''),
                             id=layout.id
-                            )
+                            ) #{profile[layout.value]}
                         - } else if (layout.type === 'multitext') {
 
                             - if (layout.name === 'profile[title]') {
@@ -33,7 +34,7 @@ block content
                                         id="title",
                                         v-model="title"
                                         )
-                                        input(type="hidden", name=layout.name, id="titleValue")
+                                        input(type="hidden", name=layout.name, value=profile.title, id="titleValue")
                                     div.col
                                         button.btn.btn-outline-secondary(type="button", "@click"="addTitle()") Add
                             - } else if (layout.name === 'profile[social]') {
@@ -55,15 +56,27 @@ block content
                                         id="socialLink",
                                         v-model="socialLink"
                                         )
-                                        input(type="hidden", name=layout.name, id="socialValue")
+                                        input(type="hidden", name=layout.name, value=profile.social, id="socialValue")
                                     div.col
                                         button.btn.btn-outline-secondary(type="button", "@click"="addSocial()") Add
                             -}
+                        - } else if (layout.type === 'image') {
 
-                        - } else {
                             input(
-                            type= layout.type,
-                            name= layout.name,
+                            type="file",
+                            name=layout.name,
+                            class="form-control " + (layout.class || ''),
+                            id=layout.id
+                            )
+                            if profile[layout.value]
+                                div(style="height: 200px")
+                                    img.img-fluid(src="/files/" + profile[layout.value], style="height: 100%")
+                        - } else {
+
+                            input(
+                            type=layout.type,
+                            name=layout.name,
+                            value=profile[layout.value]
                             class="form-control " + (layout.class || ''),
                             id=layout.id,
                             placeholder=layout.placeholder
@@ -74,15 +87,14 @@ block content
                 button.btn.btn-primary(type="submit") Save
 
     script.
-        console.log('Script');
         var vueApp = new Vue({
             el: '#profileForm',
             data: {
                 title: '',
                 social: '',
                 socialLink: '',
-                title_arr: [],
-                social_arr: []
+                title_arr: JSON.parse('!{profile.title}') || [],
+                social_arr: JSON.parse('!{profile.social}') || []
             },
             methods: {
 

@@ -4,6 +4,7 @@ const path = require('path');
 
 const AdminController = require('../core/AdminController');
 const Setting = require('../models/Setting');
+const Profile = require('../models/Profile');
 
 class Admin extends AdminController {
 
@@ -77,7 +78,13 @@ class Admin extends AdminController {
 
         this.setJs(['https://cdn.jsdelivr.net/npm/vue']);
 
-        this.render('profile', res, {layouts: layouts});
+        Profile.getProfile().then((result) => {
+
+            this.render('profile', res, {
+                layouts: layouts,
+                profile: result
+            });
+        });
     }
 
     updateProfile(req, res, next) {
@@ -100,20 +107,21 @@ class Admin extends AdminController {
                 res.send('Error!');
             } else {
 
+                let data = req.body.profile;
                 const avatar = req.files.avatar && req.files.avatar[0] || null;
                 const cover = req.files.cover && req.files.cover[0] || null;
 
-                if (avatar && cover) {
-                    let data = req.body.profile;
+                if (avatar) {
                     data.avatar = avatar.filename;
-                    data.cover = cover.filename;
-
-                    this.saveRecord('Profile', data).then((result) => {
-                        res.send('OK!');
-                    });
-                } else {
-                    res.send('Error upload!');
                 }
+
+                if (cover) {
+                    data.cover = cover.filename;
+                }
+
+                this.saveRecord('Profile', data).then((result) => {
+                    res.redirect('/admin/profile');
+                });
             }
         });
     }
