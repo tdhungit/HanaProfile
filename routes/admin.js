@@ -5,7 +5,9 @@ const authenticate = require('../core/Authenticate');
 const Admin = require('../controllers/Admin');
 const Auth = require('../controllers/Auth');
 const Skills = require('../controllers/Skills');
-const Experience = require('../controllers/Experiences');
+const Experiences = require('../controllers/Experiences');
+const Portfolios = require('../controllers/Portfolios');
+const Blogs = require('../controllers/Blogs');
 
 const router = express.Router();
 
@@ -25,9 +27,19 @@ router.post('/skills/save', authenticate, Skills.save);
 router.get('/skills/create', authenticate, Skills.edit);
 router.get('/skills/edit/:id', authenticate, Skills.edit);
 
-router.get('/experiences', authenticate, Experience.list);
-router.post('/experiences/save', authenticate, Experience.save);
-router.get('/experiences/create', authenticate, Experience.edit);
-router.get('/experiences/edit/:id', authenticate, Experience.edit);
+router.get('/experiences', authenticate, Experiences.list);
+router.post('/experiences/save', authenticate, Experiences.save);
+router.get('/experiences/create', authenticate, Experiences.edit);
+router.get('/experiences/edit/:id', authenticate, Experiences.edit);
+
+router.get('/portfolios', authenticate, Portfolios.list);
+router.post('/portfolios/save', authenticate, Portfolios.save);
+router.get('/portfolios/create', authenticate, Portfolios.edit);
+router.get('/portfolios/edit/:id', authenticate, Portfolios.edit);
+
+router.get('/blogs', authenticate, Blogs.list);
+router.post('/blogs/save', authenticate, Blogs.save);
+router.get('/blogs/create', authenticate, Blogs.edit);
+router.get('/blogs/edit/:id', authenticate, Blogs.edit);
 
 module.exports = router;

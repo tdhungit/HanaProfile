@@ -1,0 +1,43 @@
+extends ../admin
+
+block content
+    div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2= model
+
+    form(action="#{admin_url}/#{controller}/save", method="post")
+        div.card
+            div.card-header= headerTitle
+            div.card-body
+                div.form-group
+                    label Subject
+                    input.form-control(type="text", name="name", placeholder="Subject")
+
+                div.form-group
+                    label Slug
+                    input.form-control(type="text", name="slug", placeholder="Slug")
+
+                div.form-group.date-picker
+                    label Publish date
+                    input.form-control(type="text", name="date_publish", placeholder="Publish date")
+
+                div.form-group
+                    label Summary
+                    textarea.form-control(name="summary")
+
+                div.form-group
+                    label Content
+                    textarea#summernote.form-control(name="content")
+
+                div.form-group
+                    label Hot
+                    select.form-control(name="is_hot")
+                        option(value="0") No
+                        option(value="1") Yes
+
+            div.card-footer
+                button.btn.btn-primary(type="submit") Save
+
+    script.
+        jQuery(document).ready(function () {
+            jQuery('#summernote').summernote();
+        });

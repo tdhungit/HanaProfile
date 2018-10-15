@@ -19,12 +19,16 @@ html(lang="en")
         link(href="#{static_url}/lib/magnific-popup/magnific-popup.css", rel="stylesheet")
         link(href="#{static_url}/lib/hover/hover.min.css", rel="stylesheet")
 
-        each css in cssCustom
-            link(href=css, rel="stylesheet")
-
         link(rel="stylesheet", href="#{static_url}/css/style.css")
         link(href="#{static_url}/css/responsive.css", rel="stylesheet")
         link(href="#{static_url}/css/admin.css", rel="stylesheet")
+
+        script(src="#{static_url}/lib/jquery/jquery.min.js")
+        script(src="#{static_url}/lib/jquery/jquery-migrate.min.js")
+        script(src="#{static_url}/lib/bootstrap/js/bootstrap.bundle.min.js")
+
+        each css in cssCustom
+            link(href=css, rel="stylesheet")
 
         each js in jsCustom
             script(src=js)
@@ -63,13 +67,18 @@ html(lang="en")
                                 a.nav-link.active(href="#{admin_url}/experiences")
                                     i.fas.fa-user-circle
                                     = ' Experiences'
+                            li.nav-item
+                                a.nav-link.active(href="#{admin_url}/portfolios")
+                                    i.fas.fa-user-circle
+                                    = ' Portfolios'
+                            li.nav-item
+                                a.nav-link.active(href="#{admin_url}/blogs")
+                                    i.fas.fa-user-circle
+                                    = ' Blog'
 
         main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role="main")
             block content
 
-        script(src="#{static_url}/lib/jquery/jquery.min.js")
-        script(src="#{static_url}/lib/jquery/jquery-migrate.min.js")
-        script(src="#{static_url}/lib/bootstrap/js/bootstrap.bundle.min.js")
         script(src="#{static_url}/lib/typed/typed.js")
         script(src="#{static_url}/lib/owlcarousel/owl.carousel.min.js")
         script(src="#{static_url}/lib/magnific-popup/magnific-popup.min.js")
