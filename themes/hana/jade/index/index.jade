@@ -124,7 +124,7 @@ block content
                                         span= profile.email_alt
 
                     div.col-lg-6
-                        form.contactForm(action="", method="post", role="form")
+                        form.contactForm(action=base_url + '/send-mail', method="post", role="form")
                             div.row
                                 div#sendmessage Your message has been sent. Thank you!
                                 div#errormessage

@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const Promise = require('bluebird');
+const nodemailer = require('nodemailer');
 
+const config = require('../config/config');
 const BaseController = require('../core/BaseController');
 const Profile = require('../models/Profile');
 const Skill = require('../models/Skill');
@@ -17,6 +19,7 @@ class Index extends BaseController {
 
         this.index = this.index.bind(this);
         this.install = this.install.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
     }
 
     index(req, res, next) {
@@ -108,6 +111,38 @@ class Index extends BaseController {
         } catch (e) {}
 
         return profile;
+    }
+
+    sendMessage(req, res, next) {
+
+        const params = req.params;
+
+        if (params.name && params.email && params.subject && params.message) {
+
+            const transporter = nodemailer.createTransport({
+                service: config.mail.service,
+                auth: config.mail.auth
+            });
+
+            const mailOptions = {
+                from: params.email,
+                to: config.mail.mailInfo,
+                subject: params.name + ' sent a message to you: ' + params.subject,
+                html: params.message
+            };
+
+            transporter.sendMail(mailOptions, function (err, info) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log(info);
+                }
+
+                res.redirect('/');
+            });
+        }
+
+        res.send('ERROR!');
     }
 }
 

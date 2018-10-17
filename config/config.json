@@ -1,4 +1,15 @@
 {
     "theme": "hana",
-    "title": "Hana Profile"
+    "title": "Hana Profile",
+    "mail": {
+        "mailInfo": "tdhungit@gmail.com",
+        "service": "gmail",
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "xxx@xx.com",
+            "pass": "xxxx"
+        }
+    }
 }
