@@ -648,3 +648,11 @@ nav ul li a {
   text-transform: uppercase;
   color: #666;
 }
+
+#experience address {
+  margin: 0;
+}
+
+#experience p {
+  margin: 10px 0 20px 0;
+}

@@ -47,7 +47,17 @@ block content
                         div.col-lg-12
                             div.experience-info
                                 h3.mb-0= item.name
-                                div.subheading.mb-3= item.workat
+                                div.row
+                                    div.col-7
+                                        div.subheading.mb-1= item.workat
+                                    div.col-5
+                                        div.text-right.text-danger= item.date_start + ' - '
+                                            if item.date_end
+                                                = item.date_end
+                                            else
+                                                = 'Present'
+                                a(href=item.workat_link)= item.workat_link
+                                address= item.workat_address
                                 p= item.description
 
     div#portfolio.text-center.paddsection
