@@ -5,6 +5,7 @@ block content
         h1.h2= model
 
     form(action="#{admin_url}/#{controller}/save", method="post", enctype="multipart/form-data")
+        input(type="hidden", name="id", value=record.id)
         div.card
             div.card-header= headerTitle
             div.card-body
@@ -16,22 +17,49 @@ block content
 
                             select(
                             name=layout.name,
-                            class="form-control " + layout.class
+                            class="form-control " + layout.class,
+                            multiple=layout.multiple || false
                             )
-                                option(value="")
+                                option(value="") ---
+                                each item in appListStrings[layout.options]
+                                    - if (record[layout.name] && record[layout.name].indexOf(item) >= 0) {
+                                        option(value=item, selected=true)= item
+                                    - } else {
+                                        option(value=item)= item
+                                    - }
                         - } else if (layout.type === 'date') {
 
                             input(
                             type="text",
                             name=layout.name,
-                            class="form-control datepicker " + layout.class
+                            class="form-control datepicker " + layout.class,
+                            value=record[layout.name]
                             )
-                        - } else if (layout.type === 'file' || layout.type === 'image') {
+                        - } else if (layout.type === 'file') {
 
                             input(
                             type="file",
-                            name=layout.name,
+                            name=layout.name + "Upload",
                             class="form-control " + layout.class
+                            )
+                            input(type="hidden", name=layout.name, value=record[layout.name])
+                            if record[layout.name]
+                                div= record[layout.name]
+                        - } else if (layout.type === 'image') {
+
+                            input(
+                            type="file",
+                            name=layout.name + "Upload",
+                            class="form-control " + layout.class
+                            )
+                            input(type="hidden", name=layout.name, value=record[layout.name])
+                            if record[layout.name]
+                                img.img-thumbnail(src=base_url + "/files/" + record[layout.name])
+                        - } else if (layout.type === 'textarea') {
+                            textarea(
+                            name=layout.name,
+                            class="form-control " + layout.class,
+                            style="min-height: 120px;"
                             )
                         - } else {
 

@@ -45,7 +45,13 @@ class BaseModel {
             if (data[field]) {
                 insert_fields += field + ',';
                 insert_values += '?,';
-                params.push(data[field]);
+
+                let value = data[field];
+                if (Array.isArray(value) || typeof value === 'object') {
+                    value = JSON.stringify(value);
+                }
+
+                params.push(value);
             }
         });
 
@@ -70,7 +76,13 @@ class BaseModel {
 
             if (data[field] && field !== 'id') {
                 update_fields += ' ' + field + ' = ?,';
-                params.push(data[field]);
+
+                let value = data[field];
+                if (Array.isArray(value) || typeof value === 'object') {
+                    value = JSON.stringify(value);
+                }
+
+                params.push(value);
             }
         });
 
@@ -147,6 +159,10 @@ class BaseModel {
         }
 
         return this.get(sql, params);
+    }
+
+    fixRecord(data) {
+        return data;
     }
 }
 

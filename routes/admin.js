@@ -8,6 +8,7 @@ const Skills = require('../controllers/Skills');
 const Experiences = require('../controllers/Experiences');
 const Portfolios = require('../controllers/Portfolios');
 const Blogs = require('../controllers/Blogs');
+const Pages = require('../controllers/Pages');
 
 const router = express.Router();
 
@@ -41,5 +42,10 @@ router.get('/blogs', authenticate, Blogs.list);
 router.post('/blogs/save', authenticate, Blogs.save);
 router.get('/blogs/create', authenticate, Blogs.edit);
 router.get('/blogs/edit/:id', authenticate, Blogs.edit);
+
+router.get('/pages', authenticate, Pages.list);
+router.post('/pages/save', authenticate, Pages.save);
+router.get('/pages/create', authenticate, Pages.edit);
+router.get('/pages/edit/:id', authenticate, Pages.edit);
 
 module.exports = router;

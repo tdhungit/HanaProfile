@@ -38,10 +38,5 @@
     "type": "date",
     "name": "date_end",
     "label": "Date end"
-  },
-  {
-    "type": "text",
-    "name": "description",
-    "label": "Description"
   }
 ]

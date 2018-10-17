@@ -65,10 +65,12 @@ class Admin extends AdminController {
                 data[record.name] = record.value;
             });
 
-            const filePath = path.join(__dirname, '../config/config.json');
-            fs.writeFile(filePath, JSON.stringify(data), (error) => {
-                res.redirect('/admin/settings');
-            });
+            res.redirect('/admin/settings');
+            // @TODO
+            // const filePath = path.join(__dirname, '../config/config.json');
+            // fs.writeFile(filePath, JSON.stringify(data), (error) => {
+            //     res.redirect('/admin/settings');
+            // });
         });
     }
 
@@ -113,8 +115,13 @@ class Admin extends AdminController {
                 const avatar = req.files.avatar && req.files.avatar[0] || null;
                 const cover = req.files.cover && req.files.cover[0] || null;
 
-                data.avatar = avatar && avatar.filename || '';
-                data.cover = cover && cover.filename || '';
+                if (avatar) {
+                    data.avatar = avatar.filename;
+                }
+
+                if (cover) {
+                    data.cover = cover.filename;
+                }
 
                 this.saveRecord('Profile', data).then((result) => {
                     res.redirect('/admin/profile');

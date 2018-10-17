@@ -25,7 +25,8 @@ class Upload {
             filename: function (req, file, callback) {
 
                 const ext = path.extname(file.originalname);
-                const name = file.fieldname + '_' + Date.now() + ext;
+                const basename = path.basename(file.originalname, ext);
+                const name = basename + '_' + Date.now() + ext;
 
                 callback(null, name);
             }

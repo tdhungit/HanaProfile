@@ -101,7 +101,7 @@ class AdminController extends BaseController {
             const model = this.getModel();
             model.getById(req.params.id).then((record) => {
                 data.headerTitle = 'Edit: ' + record.name;
-                data.record = record;
+                data.record = model.fixRecord(record);
 
                 this.render('edit', res, data, true);
             });

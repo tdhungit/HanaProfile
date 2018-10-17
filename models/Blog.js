@@ -13,12 +13,21 @@ class Blog extends BaseModel {
             "image",
             "name",
             "slug",
+            "category",
             "date_created",
             "date_publish",
             "summary",
             "content",
             "is_hot"
         ];
+    }
+
+    fixRecord(data) {
+        try {
+            data.category = JSON.parse(data.category);
+        } catch (e) {}
+
+        return data;
     }
 }
 

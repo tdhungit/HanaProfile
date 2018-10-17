@@ -5,12 +5,16 @@ block content
         h1.h2= model
 
     form(action="#{admin_url}/#{controller}/save", method="post", enctype="multipart/form-data")
+        input(type="hidden", name="id", value=record.id)
         div.card
             div.card-header= headerTitle
             div.card-body
                 div.form-group
                     label Image
-                    input.form-control(type="file", name="image")
+                    input.form-control(type="file", name="imageFile")
+                    input(type="hidden", name="image", value=record.image)
+                    if record.image
+                        img.img-thumbnail(src=base_url + "/files/blog/" + record.image, style="height: 75px")
 
                 div.form-group
                     label Subject
@@ -19,6 +23,17 @@ block content
                 div.form-group
                     label Slug
                     input#blogSlug.form-control(type="text", name="slug", placeholder="Slug", value=record.slug)
+
+                div.form-group
+                    label Category
+                    select.form-control(multiple=true, name="category[]", style="height: 100px")
+                        option(value="Other") ---
+                        each item in appListStrings.blogCategory
+                            - if (record.category && record.category.indexOf(item) >= 0) {
+                                option(value=item, selected=true)= item
+                            - } else {
+                                option(value=item)= item
+                            - }
 
                 div.form-group
                     label Publish date

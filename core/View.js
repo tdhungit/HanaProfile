@@ -1,4 +1,6 @@
 const config = require('../config/config');
+const appListStrings = require('../config/app_list_strings');
+
 const _ = require('underscore');
 
 class View {
@@ -32,6 +34,8 @@ class View {
 
         data.cssCustom = this.css;
         data.jsCustom = this.js;
+
+        data.appListStrings = appListStrings;
 
         return data;
     }

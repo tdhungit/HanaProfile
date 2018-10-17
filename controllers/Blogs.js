@@ -12,7 +12,7 @@ class Blogs extends AdminController {
 
         this.uploadFields = [
             {
-                name: 'image',
+                name: 'imageFile',
                 maxCount: 1
             }
         ];
@@ -20,8 +20,11 @@ class Blogs extends AdminController {
 
     preSave(data, req) {
 
-        const image = req.files.image && req.files.image[0] || null;
-        data.image = image && image.filename || '';
+        const image = req.files.imageFile && req.files.imageFile[0] || null;
+
+        if (image) {
+            data.image = image.filename;
+        }
 
         return data;
     }

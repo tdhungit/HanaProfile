@@ -22,7 +22,9 @@
   {
     "type": "select",
     "name": "category",
-    "label": "Category"
+    "label": "Category",
+    "options": "portfolioCategory",
+    "multiple": true
   },
   {
     "type": "text",
@@ -40,7 +42,7 @@
     "label": "Date end"
   },
   {
-    "type": "text",
+    "type": "textarea",
     "name": "description",
     "label": "Description"
   }

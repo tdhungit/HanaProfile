@@ -21,6 +21,14 @@ class Portfolio extends BaseModel {
             "description"
         ];
     }
+
+    fixRecord(data) {
+        try {
+            data.category = JSON.parse(data.category);
+        } catch (e) {}
+
+        return data;
+    }
 }
 
 module.exports = new Portfolio();
