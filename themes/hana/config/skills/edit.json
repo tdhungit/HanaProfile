@@ -13,5 +13,10 @@
     "type": "text",
     "name": "description",
     "label": "Description"
+  },
+  {
+    "type": "text",
+    "name": "weight",
+    "label": "Order"
   }
 ]

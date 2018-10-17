@@ -394,6 +394,7 @@ nav ul li a {
 #portfolio {
   position: relative;
   padding-bottom: 50px;
+  background: #f7f7f7;
 }
 
 #portfolio .portfolio-list {
@@ -454,7 +455,7 @@ nav ul li a {
 #journal,  #journal-blog {
   height: auto;
   width: 100%;
-  background: #f7f7f7;
+  background: #fff;
   padding-bottom: 60px;
   position: relative;
 }
@@ -519,6 +520,7 @@ nav ul li a {
 #contact {
   height: auto;
   width: 100%;
+  background: #f7f7f7;
 }
 
 .contact-details {
@@ -573,7 +575,7 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 
 #footer {
-  background: #f7f7f7;
+  background: #fff;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -627,4 +629,22 @@ nav ul li a {
 
 .credits {
   font-size: 13px;
+}
+
+#experience {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.subheading {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+  color: #868e96;
+  padding-top: 5px;
+}
+
+#experience h3 {
+  text-transform: uppercase;
+  color: #666;
 }

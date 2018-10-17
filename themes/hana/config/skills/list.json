@@ -16,7 +16,7 @@
   },
   {
     "type": "text",
-    "name": "description",
-    "label": "Description"
+    "name": "weight",
+    "label": "Order"
   }
 ]

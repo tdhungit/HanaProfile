@@ -23,12 +23,11 @@ class Index extends BaseController {
 
         Promise.all([
             Profile.getProfile(),
-            Experience.getByData([], true),
-            Portfolio.getByData([], true),
-            Blog.getByData([], true),
-            Skill.getByData([], true),
+            Experience.getExperiences(),
+            Portfolio.getPortfolios(),
+            Blog.getBlog(3),
+            Skill.getSkills(),
         ]).then((result) => {
-            console.log(result);
 
             const profile = result[0];
             const experiences = result[1];
@@ -47,6 +46,7 @@ class Index extends BaseController {
 
             this.render('index', res, data);
         }).catch((error) => {
+            console.log(error);
             res.send('ERROR! Please contact with Administrator!');
         });
     }

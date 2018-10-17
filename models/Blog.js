@@ -29,6 +29,16 @@ class Blog extends BaseModel {
 
         return data;
     }
+
+    getBlog(limit = 0) {
+
+        let sql = "SELECT * FROM " + this.table_name + " ORDER BY date_publish DESC";
+        if (limit > 0) {
+            sql += " LIMIT " + limit;
+        }
+
+        return this.all(sql);
+    }
 }
 
 module.exports = new Blog();

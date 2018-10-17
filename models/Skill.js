@@ -12,8 +12,19 @@ class Skill extends BaseModel {
             "id",
             "name",
             "icon",
-            "description"
+            "description",
+            "weight"
         ];
+    }
+
+    getSkills(limit = 0) {
+
+        let sql = "SELECT * FROM " + this.table_name + " ORDER BY weight ASC";
+        if (limit > 0) {
+            sql += " LIMIT " + limit;
+        }
+
+        return this.all(sql);
     }
 }
 

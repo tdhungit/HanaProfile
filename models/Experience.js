@@ -20,6 +20,16 @@ class Experience extends BaseModel {
             "description"
         ];
     }
+
+    getExperiences(limit = 0) {
+
+        let sql = "SELECT * FROM " + this.table_name + " ORDER BY date_start DESC";
+        if (limit > 0) {
+            sql += " LIMIT " + limit;
+        }
+
+        return this.all(sql);
+    }
 }
 
 module.exports = new Experience();

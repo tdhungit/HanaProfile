@@ -35,6 +35,21 @@ block content
                         span= item.name
                         p.separator= item.description
 
+    div#experience.text-left.paddsection
+        div.container
+            div.section-title.text-center
+                h2 Experience
+
+        div.container
+            div.experience-block
+                div.row
+                    each item in experiences
+                        div.col-lg-12
+                            div.experience-info
+                                h3.mb-0= item.name
+                                div.subheading.mb-3= item.workat
+                                p= item.description
+
     div#portfolio.text-center.paddsection
         div.container
             div.section-title.text-center
