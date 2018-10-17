@@ -13,6 +13,8 @@ class Experience extends BaseModel {
             "name",
             "type",
             "workat",
+            "workat_link",
+            "workat_address",
             "date_start",
             "date_end",
             "description"

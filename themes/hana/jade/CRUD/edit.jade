@@ -54,7 +54,7 @@ block content
                             )
                             input(type="hidden", name=layout.name, value=record[layout.name])
                             if record[layout.name]
-                                img.img-thumbnail(src=base_url + "/files/" + record[layout.name])
+                                img.img-thumbnail(src=base_url + "/files/" + record[layout.name], style="height: 75px")
                         - } else if (layout.type === 'textarea') {
                             textarea(
                             name=layout.name,

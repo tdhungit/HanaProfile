@@ -1,13 +1,14 @@
 [
   {
-    "type": "text",
-    "name": "name",
-    "label": "Name"
+    "type": "select",
+    "name": "type",
+    "label": "Type",
+    "options": "experienceType"
   },
   {
     "type": "text",
-    "name": "type",
-    "label": "Type"
+    "name": "name",
+    "label": "Title"
   },
   {
     "type": "text",
@@ -16,16 +17,26 @@
   },
   {
     "type": "text",
+    "name": "workat_link",
+    "label": "Work at site"
+  },
+  {
+    "type": "text",
+    "name": "workat_address",
+    "label": "Address"
+  },
+  {
+    "type": "date",
     "name": "date_start",
     "label": "Start"
   },
   {
-    "type": "text",
+    "type": "date",
     "name": "date_end",
     "label": "End"
   },
   {
-    "type": "text",
+    "type": "textarea",
     "name": "description",
     "label": "Description"
   }

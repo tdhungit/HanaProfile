@@ -11,5 +11,9 @@ module.exports = {
         "Mobile",
         "Javascript",
         "Blockchain"
+    ],
+    experienceType: [
+        "Jobs",
+        "Educations"
     ]
 };
