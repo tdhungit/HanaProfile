@@ -31,13 +31,6 @@ class Blogs extends AdminController {
 
     edit(req, res, next) {
 
-        let data = {
-            model: this.model,
-            controller: this.constructor.name.toLowerCase(),
-            headerTitle: 'Create new',
-            record: {}
-        };
-
         this.setCss([
             'http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css'
         ]);
@@ -45,6 +38,13 @@ class Blogs extends AdminController {
         this.setJs([
             'http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js'
         ]);
+
+        let data = {
+            model: this.model,
+            controller: this.constructor.name.toLowerCase(),
+            headerTitle: 'Create new',
+            record: {}
+        };
 
         if (req.params.id) {
 

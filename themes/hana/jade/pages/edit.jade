@@ -1,0 +1,54 @@
+extends ../admin
+
+block content
+    div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        h1.h2= model
+
+    form(action="#{admin_url}/#{controller}/save", method="post", enctype="multipart/form-data")
+        input(type="hidden", name="id", value=record.id)
+        div.card
+            div.card-header= headerTitle
+            div.card-body
+                div.form-group
+                    label Title
+                    input#pageTitle.form-control(type="text", name="name", value=record.name)
+
+                div.form-group
+                    label Slug
+                    input#pageSlug.form-control(type="text", name="slug", value=record.slug)
+
+                div.form-group
+                    label Content
+                    textarea#summernote.form-control(name="content")= record.content
+
+                div.form-group
+                    label Meta keyword
+                    input.form-control(type="text", name="meta_keyword", value=record.meta_keyword)
+
+                div.form-group
+                    label Meta keyword
+                    textarea.form-control(name="meta_description", style="height: 150px")= record.meta_description
+
+            div.card-footer
+                button.btn.btn-primary(type="submit") Save
+
+    script.
+        jQuery(document).ready(function () {
+            jQuery('#summernote').summernote({
+                popover: false,
+                airMode: false,
+                height: 300,
+                tabsize: 2
+            });
+
+            jQuery('#pageTitle').blur(function () {
+                var name = jQuery(this).val();
+                var slug = removeTV(name);
+                slug = slug.toLowerCase();
+
+                var cSlug = jQuery('#pageSlug').val();
+                if (!cSlug) {
+                    jQuery('#pageSlug').val(slug);
+                }
+            });
+        });
