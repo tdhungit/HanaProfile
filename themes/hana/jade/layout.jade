@@ -19,11 +19,15 @@ html(lang="en")
         link(href="#{static_url}/lib/magnific-popup/magnific-popup.css", rel="stylesheet")
         link(href="#{static_url}/lib/hover/hover.min.css", rel="stylesheet")
 
-        each css in cssCustom
-            link(href=css, rel="stylesheet")
-
         link(rel="stylesheet", href="#{static_url}/css/style.css")
         link(href="#{static_url}/css/responsive.css", rel="stylesheet")
+
+        script(src="#{static_url}/lib/jquery/jquery.min.js")
+        script(src="#{static_url}/lib/jquery/jquery-migrate.min.js")
+        script(src="#{static_url}/lib/bootstrap/js/bootstrap.bundle.min.js")
+
+        each css in cssCustom
+            link(href=css, rel="stylesheet")
 
         each js in jsCustom
             script(src=js)
@@ -52,12 +56,10 @@ html(lang="en")
 
         block content
 
-        script(src="#{static_url}/lib/jquery/jquery.min.js")
-        script(src="#{static_url}/lib/jquery/jquery-migrate.min.js")
-        script(src="#{static_url}/lib/bootstrap/js/bootstrap.bundle.min.js")
         script(src="#{static_url}/lib/typed/typed.js")
         script(src="#{static_url}/lib/owlcarousel/owl.carousel.min.js")
         script(src="#{static_url}/lib/magnific-popup/magnific-popup.min.js")
         script(src="#{static_url}/lib/isotope/isotope.pkgd.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js")
         script(src="#{static_url}/contactform/contactform.js")
         script(src="#{static_url}/js/main.js")

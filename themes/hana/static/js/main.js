@@ -56,16 +56,6 @@ $(document).ready(function () {
         $('.nav-menu').slideToggle();
     });
 
-    var typed = $(".typed");
-
-    $(function () {
-        typed.typed({
-            strings: [" Jacky.", " Developer.", " Freelancer.", " Photographer.", " Farmer."],
-            typeSpeed: 100,
-            loop: true,
-        });
-    });
-
     $('.services-carousel').owlCarousel({
         autoplay: true,
         loop: true,
