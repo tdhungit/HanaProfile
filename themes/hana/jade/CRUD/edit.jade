@@ -4,7 +4,7 @@ block content
     div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
         h1.h2= model
 
-    form(action="#{admin_url}/#{controller}/save", method="post")
+    form(action="#{admin_url}/#{controller}/save", method="post", enctype="multipart/form-data")
         div.card
             div.card-header= headerTitle
             div.card-body
@@ -14,13 +14,33 @@ block content
 
                         - if (layout.type === 'select') {
 
+                            select(
+                            name=layout.name,
+                            class="form-control " + layout.class
+                            )
+                                option(value="")
+                        - } else if (layout.type === 'date') {
+
+                            input(
+                            type="text",
+                            name=layout.name,
+                            class="form-control datepicker " + layout.class
+                            )
+                        - } else if (layout.type === 'file' || layout.type === 'image') {
+
+                            input(
+                            type="file",
+                            name=layout.name,
+                            class="form-control " + layout.class
+                            )
                         - } else {
 
                             input(
                             type=layout.type,
                             name=layout.name,
                             class="form-control " + layout.class
-                            placeholder=layout.placeholder
+                            placeholder=layout.placeholder,
+                            value=record[layout.name]
                             )
                         - }
 

@@ -29,9 +29,9 @@ block content
                                     td= record[layout.name]
 
                                 td
-                                    a.px-2(href="")
+                                    a.px-2(href=admin_url + "/#{controller}/edit/" + record.id)
                                         i.fas.fa-eye
-                                    a.px-2(href="")
+                                    a.px-2(href=admin_url + "/#{controller}/edit/" + record.id)
                                         i.fas.fa-edit
-                                    a.px-2(href="")
+                                    a.px-2(href=admin_url + "/#{controller}/delete/" + record.id)
                                         i.fas.fa-trash-alt

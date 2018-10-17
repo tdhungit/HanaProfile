@@ -13,6 +13,8 @@ class AdminController extends BaseController {
         this.upload = new Upload();
         this.config_path = this.themePath + '/config/' + this.constructor.name.toLowerCase();
 
+        this.uploadFields = [];
+
         this.save = this.save.bind(this);
         this.list = this.list.bind(this);
         this.edit = this.edit.bind(this);
@@ -26,6 +28,18 @@ class AdminController extends BaseController {
         return require(model_path);
     }
 
+    setUploadFields(fields) {
+        return this.uploadFields = fields;
+    }
+
+    getUploadFields() {
+        return this.upload.getUpload().fields(this.uploadFields);
+    }
+
+    preSave(data, req) {
+        return data;
+    }
+
     saveRecord(modelName, data) {
         const model = this.getModel(modelName);
         return model.save(data);
@@ -33,13 +47,25 @@ class AdminController extends BaseController {
 
     save(req, res, next) {
 
-        const modelName = req.body.model || '';
+        const upload = this.getUploadFields();
 
-        const controller = this.constructor.name.toLowerCase();
-        const model = this.getModel(modelName);
+        upload(req, res, (error) => {
 
-        model.save(req.body).then((result) => {
-            res.redirect('/admin/' + controller);
+            if (error) {
+                console.log(error);
+                res.send('Upload error!');
+            } else {
+
+                const modelName = req.body.model || '';
+
+                const controller = this.constructor.name.toLowerCase();
+                const model = this.getModel(modelName);
+
+                const data = this.preSave(req.body, req);
+                model.save(data).then((result) => {
+                    res.redirect('/admin/' + controller);
+                });
+            }
         });
     }
 
@@ -66,7 +92,8 @@ class AdminController extends BaseController {
             model: this.model,
             controller: this.constructor.name.toLowerCase(),
             headerTitle: 'Create new',
-            layouts: require(this.config_path + '/edit')
+            layouts: require(this.config_path + '/edit'),
+            record: {}
         };
 
         if (req.params.id) {
@@ -81,20 +108,6 @@ class AdminController extends BaseController {
         } else {
             this.render('edit', res, data, true);
         }
-    }
-
-    upload(req, res, next) {
-
-        const upload = this.upload.getUpload().single('file');
-
-        upload(req, res, (error) => {
-
-            if (error) {
-                res.json(error);
-            } else {
-                res.json(req.file);
-            }
-        });
     }
 }
 

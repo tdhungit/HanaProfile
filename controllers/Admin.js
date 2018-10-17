@@ -89,7 +89,7 @@ class Admin extends AdminController {
 
     updateProfile(req, res, next) {
 
-        const upload = this.upload.getUpload().fields([
+        this.setUploadFields([
             {
                 name: 'avatar',
                 maxCount: 1
@@ -100,24 +100,21 @@ class Admin extends AdminController {
             }
         ]);
 
+        const upload = this.getUploadFields();
+
         upload(req, res, (error) => {
 
             if (error) {
                 console.log(error);
-                res.send('Error!');
+                res.send('Upload error!');
             } else {
 
                 let data = req.body.profile;
                 const avatar = req.files.avatar && req.files.avatar[0] || null;
                 const cover = req.files.cover && req.files.cover[0] || null;
 
-                if (avatar) {
-                    data.avatar = avatar.filename;
-                }
-
-                if (cover) {
-                    data.cover = cover.filename;
-                }
+                data.avatar = avatar && avatar.filename || '';
+                data.cover = cover && cover.filename || '';
 
                 this.saveRecord('Profile', data).then((result) => {
                     res.redirect('/admin/profile');

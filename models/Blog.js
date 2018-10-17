@@ -10,6 +10,7 @@ class Blog extends BaseModel {
     getFields() {
         return [
             "id",
+            "image",
             "name",
             "slug",
             "date_created",

@@ -109,3 +109,17 @@ nav.sidebar ul li {
 nav.sidebar ul li a {
     text-transform: none;
 }
+
+.note-editor b, .note-editor strong {
+    font-weight: bold;
+}
+
+.note-editor .btn {
+    height: auto;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.note-editor p {
+    margin: 0;
+}

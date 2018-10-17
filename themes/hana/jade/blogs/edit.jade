@@ -4,40 +4,62 @@ block content
     div.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
         h1.h2= model
 
-    form(action="#{admin_url}/#{controller}/save", method="post")
+    form(action="#{admin_url}/#{controller}/save", method="post", enctype="multipart/form-data")
         div.card
             div.card-header= headerTitle
             div.card-body
                 div.form-group
+                    label Image
+                    input.form-control(type="file", name="image")
+
+                div.form-group
                     label Subject
-                    input.form-control(type="text", name="name", placeholder="Subject")
+                    input#blogSubject.form-control(type="text", name="name", placeholder="Subject", value=record.name)
 
                 div.form-group
                     label Slug
-                    input.form-control(type="text", name="slug", placeholder="Slug")
+                    input#blogSlug.form-control(type="text", name="slug", placeholder="Slug", value=record.slug)
 
-                div.form-group.date-picker
+                div.form-group
                     label Publish date
-                    input.form-control(type="text", name="date_publish", placeholder="Publish date")
+                    input.form-control.datepicker(type="text", name="date_publish", placeholder="Publish date", , value=record.date_publish)
 
                 div.form-group
                     label Summary
-                    textarea.form-control(name="summary")
+                    textarea.form-control(name="summary", style="height: 120px")= record.summary
 
                 div.form-group
                     label Content
-                    textarea#summernote.form-control(name="content")
+                    textarea#summernote.form-control(name="content")= record.content
 
                 div.form-group
                     label Hot
                     select.form-control(name="is_hot")
                         option(value="0") No
-                        option(value="1") Yes
+                        if record.is_hot
+                            option(value="1", selected="selected") Yes
+                        else
+                            option(value="1") Yes
 
             div.card-footer
                 button.btn.btn-primary(type="submit") Save
 
     script.
         jQuery(document).ready(function () {
-            jQuery('#summernote').summernote();
+            jQuery('#summernote').summernote({
+                popover: false,
+                airMode: false,
+                height: 220
+            });
+
+            jQuery('#blogSubject').blur(function () {
+                var name = jQuery(this).val();
+                var slug = removeTV(name);
+                slug = slug.toLowerCase();
+
+                var cSlug = jQuery('#blogSlug').val();
+                if (!cSlug) {
+                    jQuery('#blogSlug').val(slug);
+                }
+            });
         });

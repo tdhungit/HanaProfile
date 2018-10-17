@@ -20,16 +20,6 @@
     "label": "Publish"
   },
   {
-    "type": "text",
-    "name": "summary",
-    "label": "Summary"
-  },
-  {
-    "type": "text",
-    "name": "content",
-    "label": "Content"
-  },
-  {
     "type": "select",
     "name": "is_hot",
     "label": "Hot"
