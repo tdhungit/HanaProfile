@@ -32,7 +32,7 @@ html(lang="en")
         each js in jsCustom
             script(src=js)
     body
-        nav#main-nav
+        nav(style="display: block;")
             div.row
                 div.container
                     div.logo
@@ -44,17 +44,17 @@ html(lang="en")
 
                     ul.nav-menu.list-unstyled
                         li
-                            a.smoothScroll(href="#header") Home
+                            a(href=base_url + "/#header") Home
                         li
-                            a.smoothScroll(href="#about") About
+                            a(href=base_url + "/#about") About
                         li
-                            a.smoothScroll(href="#experience") Experience
+                            a(href=base_url + "/#experience") Experience
                         li
-                            a.smoothScroll(href="#portfolio") Portfolio
+                            a(href=base_url + "/#portfolio") Portfolio
                         li
-                            a.smoothScroll(href="#journal") Blog
+                            a(href=base_url + "/#journal") Blog
                         li
-                            a.smoothScroll(href="#contact") Contact
+                            a(href=base_url + "/#contact") Contact
 
         block content
 

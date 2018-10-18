@@ -20,6 +20,8 @@ class Index extends BaseController {
         this.index = this.index.bind(this);
         this.install = this.install.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
+        this.blog = this.blog.bind(this);
+        this.blogDetail = this.blogDetail.bind(this);
     }
 
     index(req, res, next) {
@@ -143,6 +145,41 @@ class Index extends BaseController {
         }
 
         res.send('ERROR!');
+    }
+
+    blog(req, res, next) {
+
+        Blog.getBlog().then((records) => {
+
+            let data = {records: records};
+
+            this.render('blog', res, data);
+        }).catch((error) => {
+            console.log(error);
+            res.send('ERROR!');
+        });
+    }
+
+    blogDetail(req, res, next) {
+
+        this.setCss([
+            '/static/css/blog.css'
+        ]);
+
+        const id = req.params.id;
+        Blog.getById(id).then((record) => {
+
+            let data = {
+                record: record,
+                author: config.title,
+                fbAppId: config.fbAppId
+            };
+
+            this.render('blog_detail', res, data);
+        }).catch((error) => {
+            console.log(error);
+            res.send('ERROR!');
+        });
     }
 }
 

@@ -1,0 +1,21 @@
+extends ../layoutMenu
+
+block content
+    div#journal-blog.text-left.paddsections(style="padding-top: 150px")
+        div.container
+            div.section-title.text-center
+                h2 journal
+
+        div.container
+            div.journal-block
+                div.row
+                    each record in records
+                        div.col-lg-4.col-md-6
+                            div.journal-info.mb-30
+                                a(href=base_url + '/' + record.slug + '-p' + record.id)
+                                    img.img-responsive(src=base_url + '/files/blog/' + record.image, alt=record.name)
+
+                                div.journal-txt
+                                    h4
+                                        a(href=base_url + '/' + record.slug + '-p' + record.id)= record.name
+                                    p.separator= record.summary

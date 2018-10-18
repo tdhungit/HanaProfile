@@ -1,0 +1,49 @@
+extends ../layoutMenu
+
+block content
+    div#fb-root
+
+        script.
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=#{fbAppId}&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+    div.main-content.paddsection
+        div.container
+            div.row.justify-content-center
+                div.col-md-8.col-md-offset-2
+                    div.row
+                        div.container-main.single-main
+                            div.col-md-12
+                                div.block-main.mb-30
+                                    img.img-responsive(src=base_url + '/files/blog/' + record.image, alt=record.name)
+                                    div.content-main.single-post.padDiv
+                                        div.journal-txt
+                                            h4
+                                                a(href="")= record.name
+
+                                        div.post-meta
+                                            ul.list-unstyled.mb-0
+                                                li.author by:
+                                                    a(href="")= author
+                                                li.date date:
+                                                    a(href="")= record.date_publish
+                                                li.commont
+                                                    i.ion-ios-heart-outline
+                                                    a(href="") Comments
+
+                                        div.mb-30 !{record.content}
+
+                            div.col-md-12
+                                div.comments.text-left.padDiv.mb-30
+                                    div.entry-comments
+                                        div.fb-comments(
+                                        data-href=base_url + '/' + record.slug + '-p' + record.id,
+                                        data-numposts="5",
+                                        data-width="100%"
+                                        )
