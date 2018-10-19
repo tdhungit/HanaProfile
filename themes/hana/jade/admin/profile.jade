@@ -24,7 +24,10 @@ block content
 
                                 div.form-group
                                     ul
-                                        li(v-for="item in title_arr") {{ item }}
+                                        li(v-for="(item, index) in title_arr")
+                                            span.mr-2 {{ item }}
+                                            a.text-right(href="javascript:void(0)", "@click"="removeTitle(index)")
+                                                i.fas.fa-trash
 
                                 div.form-row
                                     div.col-7
@@ -41,7 +44,10 @@ block content
 
                                 div.form-group
                                     ul
-                                        li(v-for="item in social_arr") {{ item }}
+                                        li(v-for="(item, index) in social_arr")
+                                            span.mr-2 {{ item }}
+                                            a(href="javascript:void(0)", "@click"="removeSocial(index)")
+                                                i.fas.fa-trash
 
                                 div.form-row
                                     div.col-3
@@ -49,6 +55,7 @@ block content
                                             option(value="facebook") Facebook
                                             option(value="twitter") Twitter
                                             option(value="linkedin") LinkedIn
+                                            option(value="github") Github
                                     div.col-7
                                         input(
                                         type="text",
@@ -109,6 +116,11 @@ block content
                     }
                 },
 
+                removeTitle(index) {
+                    this.title_arr.splice(index, 1);
+                    jQuery('#titleValue').val(JSON.stringify(this.title_arr));
+                },
+
                 addSocial() {
 
                     if (this.social && this.socialLink) {
@@ -123,6 +135,11 @@ block content
 
                         jQuery('#socialValue').val(JSON.stringify(this.social_arr));
                     }
+                },
+
+                removeSocial(index) {
+                    this.social_arr.splice(index, 1);
+                    jQuery('#socialValue').val(JSON.stringify(this.social_arr));
                 }
             }
         });

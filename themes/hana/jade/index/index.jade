@@ -24,7 +24,7 @@ block content
                 div.col-lg-7
                     div.about-descr
                         p.p-heading= profile.summary
-                        p.separator= profile.description
+                        p.separator !{profile.description.replace(/\n/g, '<br/>')}
 
     div#services
         div.container
@@ -34,31 +34,6 @@ block content
                         i(class=item.icon)
                         span= item.name
                         p.separator= item.description
-
-    div#experience.text-left.paddsection
-        div.container
-            div.section-title.text-center
-                h2 Experience
-
-        div.container
-            div.experience-block
-                div.row
-                    each item in experiences
-                        div.col-lg-12
-                            div.experience-info
-                                h3.mb-0= item.name
-                                div.row
-                                    div.col-7
-                                        div.subheading.mb-1= item.workat
-                                    div.col-5
-                                        div.text-right.text-danger= item.date_start + ' - '
-                                            if item.date_end
-                                                = item.date_end
-                                            else
-                                                = 'Present'
-                                a(href=item.workat_link)= item.workat_link
-                                address= item.workat_address
-                                p= item.description
 
     div#portfolio.text-center.paddsection
         div.container
@@ -105,6 +80,31 @@ block content
                                         a(href="")= item.name
 
                                     p.separator= item.summary
+
+    div#experience.text-left.paddsection
+        div.container
+            div.section-title.text-center
+                h2 Experience
+
+        div.container
+            div.experience-block
+                div.row
+                    each item in experiences
+                        div.col-lg-12
+                            div.experience-info
+                                h3.mb-0= item.name
+                                div.row
+                                    div.col-7
+                                        div.subheading.mb-1= item.workat
+                                    div.col-5
+                                        div.text-right.text-danger= item.date_start + ' - '
+                                            if item.date_end
+                                                = item.date_end
+                                            else
+                                                = 'Present'
+                                a.text-info(href=item.workat_link, style="font-size: 13px")= item.workat_link
+                                address.text-muted= item.workat_address
+                                p !{item.description.replace(/\n/g, '<br/>')}
 
     div#contact.paddsection
         div.container
